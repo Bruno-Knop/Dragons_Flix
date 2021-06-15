@@ -100,7 +100,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 */
 
-$route['default_controller'] = 'install';
+//$route['default_controller'] = 'home'; = direciona para a homepage
+//$route['default_controller'] = 'install'; = realiza instalação do banco de dados e usuário
+$route['default_controller'] = 'home';
 
 $route['404_override'] = '';
 

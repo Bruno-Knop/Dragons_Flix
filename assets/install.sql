@@ -57,11 +57,8 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `actor`;
 
 CREATE TABLE `actor` (
-
   `actor_id` int(11) NOT NULL,
-
   `name` longtext COLLATE utf8_unicode_ci NOT NULL
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -2086,15 +2083,10 @@ INSERT INTO `actor` (`actor_id`, `name`) VALUES
 DROP TABLE IF EXISTS `ci_sessions`;
 
 CREATE TABLE `ci_sessions` (
-
   `id` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-
   `ip_address` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
-
   `data` blob NOT NULL
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -2114,13 +2106,9 @@ CREATE TABLE `ci_sessions` (
 DROP TABLE IF EXISTS `episode`;
 
 CREATE TABLE `episode` (
-
   `episode_id` int(11) NOT NULL,
-
   `season_id` int(11) NOT NULL,
-
   `title` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `url` longtext COLLATE utf8_unicode_ci NOT NULL
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2142,13 +2130,9 @@ CREATE TABLE `episode` (
 DROP TABLE IF EXISTS `faq`;
 
 CREATE TABLE `faq` (
-
   `faq_id` int(11) NOT NULL,
-
   `question` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `answer` longtext COLLATE utf8_unicode_ci NOT NULL
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -2168,11 +2152,8 @@ CREATE TABLE `faq` (
 DROP TABLE IF EXISTS `genre`;
 
 CREATE TABLE `genre` (
-
   `genre_id` int(11) NOT NULL,
-
   `name` longtext COLLATE utf8_unicode_ci NOT NULL
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `genre` (`genre_id`, `name`) VALUES
@@ -2207,15 +2188,10 @@ INSERT INTO `genre` (`genre_id`, `name`) VALUES
 DROP TABLE IF EXISTS `language`;
 
 CREATE TABLE `language` (
-
   `phrase_id` int(11) NOT NULL,
-
   `phrase` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `english` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `portuguese` longtext COLLATE utf8_unicode_ci NOT NULL
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 
@@ -2469,29 +2445,17 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `portuguese`) VALUES
 DROP TABLE IF EXISTS `movie`;
 
 CREATE TABLE `movie` (
-
   `movie_id` int(11) NOT NULL,
-
   `title` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `description_short` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `description_long` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `year` int(11) NOT NULL,
-
   `rating` int(11) NOT NULL,
-
   `genre_id` int(11) NOT NULL,
-
   `actors` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `featured` int(11) NOT NULL,
-
   `kids_restriction` int(11) NOT NULL DEFAULT '0',
-
   `url` longtext COLLATE utf8_unicode_ci NOT NULL
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `movie` (`movie_id`, `title`, `description_short`, `description_long`, `year`, `rating`, `genre_id`, `actors`, `featured`, `kids_restriction`, `url`) VALUES
@@ -2500,10 +2464,7 @@ INSERT INTO `movie` (`movie_id`, `title`, `description_short`, `description_long
 'Anos após ser demitido, Johnny English é convocado de volta à ativa para impedir que uma quadrilha infiltrada no serviço secreto britânico assassine o primeiro ministro chinês.', 
 'Johnny English (Rowan Atkinson), o principal espião do MI7, passou a usar suas habilidades em uma remota região da Ásia. Quando seus superiores tomam conhecimento do plano  de um atentado contra o premier chinês eles resolvem entrar em contato com English, para que possa agir no caso. É sua grande chance de redenção, devido a um erro cometido no passado. Desta forma, English usa seus aparelhos de alta tecnologia para desmascarar uma conspiração antes da realização de uma conferência de chefes de estado, prevista para daqui a poucos dias.', 
 2011, 3, 1, '["1","2","3"]', 0, 0, 
-'https://www399.ff-01.com/token=fDGBTbKxz9-pVnQfhrITgA/1621828949/189.18.0.0/143/a/33/0e52925ed94a9a19915fea01ff3df33a-480p.mp4'),
-(2,
-);
-
+'https://www399.ff-01.com/token=fDGBTbKxz9-pVnQfhrITgA/1621828949/189.18.0.0/143/a/33/0e52925ed94a9a19915fea01ff3df33a-480p.mp4');
 
 
 
@@ -2523,17 +2484,11 @@ INSERT INTO `movie` (`movie_id`, `title`, `description_short`, `description_long
 DROP TABLE IF EXISTS `plan`;
 
 CREATE TABLE `plan` (
-
   `plan_id` int(11) NOT NULL,
-
   `name` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `screens` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `price` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `status` int(11) NOT NULL COMMENT '1 active, 0 inactive'
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -2547,11 +2502,8 @@ CREATE TABLE `plan` (
 
 
 INSERT INTO `plan` (`plan_id`, `name`, `screens`, `price`, `status`) VALUES
-
 (1, 'basic', '1', '7.99', 1),
-
 (2, 'standard', '2', '9.99', 1),
-
 (3, 'premium', '4', '11.99', 1);
 
 
@@ -2571,13 +2523,9 @@ INSERT INTO `plan` (`plan_id`, `name`, `screens`, `price`, `status`) VALUES
 DROP TABLE IF EXISTS `season`;
 
 CREATE TABLE `season` (
-
   `season_id` int(11) NOT NULL,
-
   `series_id` int(11) NOT NULL,
-
   `name` longtext COLLATE utf8_unicode_ci NOT NULL
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -2597,29 +2545,17 @@ CREATE TABLE `season` (
 DROP TABLE IF EXISTS `series`;
 
 CREATE TABLE `series` (
-
   `series_id` int(11) NOT NULL,
-
   `title` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `description_short` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `description_long` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `genre_id` int(11) NOT NULL,
-
   `actors` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT 'comma separated actor_id',
-
   `year` int(11) NOT NULL,
-
   `rating` int(11) NOT NULL,
-
   `featured` int(11) NOT NULL,
-
   `kids_restriction` int(11) NOT NULL,
-
   `episodes` longtext COLLATE utf8_unicode_ci NOT NULL
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -2639,13 +2575,9 @@ CREATE TABLE `series` (
 DROP TABLE IF EXISTS `settings`;
 
 CREATE TABLE `settings` (
-
   `settings_id` int(11) NOT NULL,
-
   `type` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-
   `description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
@@ -2659,31 +2591,18 @@ CREATE TABLE `settings` (
 
 
 INSERT INTO `settings` (`settings_id`, `type`, `description`) VALUES
-
 (1, 'site_name', 'Movie subscription portal'),
-
 (2, 'site_email', ''),
-
 (3, 'paypal_merchant_email', ''),
-
 (4, 'invoice_address', ''),
-
 (5, 'language', 'english'),
-
 (6, 'purchase_code', ''),
-
 (7, 'privacy_policy', ''),
-
 (8, 'refund_policy', ''),
-
 (9, 'stripe_publishable_key', ''),
-
 (10, 'stripe_secret_key', ''),
-
 (11, 'trial_period', 'off'),
-
 (12, 'trial_period_days', '30'),
-
 (13, 'theme', 'theme_1');
 
 
@@ -2703,27 +2622,16 @@ INSERT INTO `settings` (`settings_id`, `type`, `description`) VALUES
 DROP TABLE IF EXISTS `subscription`;
 
 CREATE TABLE `subscription` (
-
   `subscription_id` int(11) NOT NULL,
-
   `plan_id` int(11) NOT NULL,
-
   `user_id` int(11) NOT NULL,
-
   `price_amount` int(11) NOT NULL,
-
   `paid_amount` float NOT NULL,
-
   `timestamp_from` int(11) NOT NULL,
-
   `timestamp_to` int(11) NOT NULL,
-
   `payment_method` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `payment_details` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `payment_timestamp` int(11) NOT NULL,
-
   `status` int(11) NOT NULL DEFAULT '1' COMMENT '1 active, 0 cancelled'
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2747,53 +2655,29 @@ CREATE TABLE `subscription` (
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
-
   `user_id` int(11) NOT NULL,
-
   `type` int(11) NOT NULL COMMENT '1 admin, 0 customer',
-
   `name` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `email` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `password` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user1` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'user 1',
-
   `user2` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'user 2',
-
   `user3` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'user 3',
-
   `user4` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'user 4',
-
   `user1_session` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user2_session` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user3_session` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user4_session` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user1_movielist` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user2_movielist` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user3_movielist` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user4_movielist` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user1_serieslist` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user2_serieslist` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user3_serieslist` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `user4_serieslist` longtext COLLATE utf8_unicode_ci NOT NULL,
-
   `plan_id` int(11) NOT NULL,
-
   `status` int(11) NOT NULL DEFAULT '1' COMMENT '0 banned'
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 
@@ -2805,7 +2689,6 @@ CREATE TABLE `user` (
 --
 
 
-
 --
 
 -- Indexes for table `actor`
@@ -2815,8 +2698,6 @@ CREATE TABLE `user` (
 ALTER TABLE `actor`
 
   ADD PRIMARY KEY (`actor_id`);
-
-
 
 --
 
@@ -2830,8 +2711,6 @@ ALTER TABLE `ci_sessions`
 
   ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
-
-
 --
 
 -- Indexes for table `episode`
@@ -2841,8 +2720,6 @@ ALTER TABLE `ci_sessions`
 ALTER TABLE `episode`
 
   ADD PRIMARY KEY (`episode_id`);
-
-
 
 --
 
@@ -2854,8 +2731,6 @@ ALTER TABLE `faq`
 
   ADD PRIMARY KEY (`faq_id`);
 
-
-
 --
 
 -- Indexes for table `genre`
@@ -2865,8 +2740,6 @@ ALTER TABLE `faq`
 ALTER TABLE `genre`
 
   ADD PRIMARY KEY (`genre_id`);
-
-
 
 --
 
@@ -2878,8 +2751,6 @@ ALTER TABLE `language`
 
   ADD PRIMARY KEY (`phrase_id`);
 
-
-
 --
 
 -- Indexes for table `movie`
@@ -2889,8 +2760,6 @@ ALTER TABLE `language`
 ALTER TABLE `movie`
 
   ADD PRIMARY KEY (`movie_id`);
-
-
 
 --
 
@@ -2902,8 +2771,6 @@ ALTER TABLE `plan`
 
   ADD PRIMARY KEY (`plan_id`);
 
-
-
 --
 
 -- Indexes for table `season`
@@ -2913,8 +2780,6 @@ ALTER TABLE `plan`
 ALTER TABLE `season`
 
   ADD PRIMARY KEY (`season_id`);
-
-
 
 --
 
@@ -2926,8 +2791,6 @@ ALTER TABLE `series`
 
   ADD PRIMARY KEY (`series_id`);
 
-
-
 --
 
 -- Indexes for table `settings`
@@ -2937,8 +2800,6 @@ ALTER TABLE `series`
 ALTER TABLE `settings`
 
   ADD PRIMARY KEY (`settings_id`);
-
-
 
 --
 
@@ -2950,8 +2811,6 @@ ALTER TABLE `subscription`
 
   ADD PRIMARY KEY (`subscription_id`);
 
-
-
 --
 
 -- Indexes for table `user`
@@ -2961,8 +2820,6 @@ ALTER TABLE `subscription`
 ALTER TABLE `user`
 
   ADD PRIMARY KEY (`user_id`);
-
-
 
 --
 

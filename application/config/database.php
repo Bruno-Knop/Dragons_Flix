@@ -152,13 +152,13 @@ $db['default'] = array(
 
 	'dsn'	=> '',
 
-	'hostname' => '',
+	'hostname' => 'localhost',
 
-	'username' => '',
+	'username' => 'root',
 
 	'password' => '',
 
-	'database' => '',
+	'database' => 'dragons_flix',
 
 	'dbdriver' => 'mysqli',
 
