@@ -136,6 +136,10 @@
 							<script>const player = new Plyr('#player');</script>
 
 							<!------------- PLYR.IO ------------>
+						<?php elseif (video_type($movie_detail->url) == 'topflix'): ?>
+							<div class="plyr__video-embed" id="player">
+								<iframe src="<?php echo $movie_detail->url; ?>" allowfullscreen allowtransparency frameborder = "0" width="743.5" height="464.69"></iframe>
+							</div>
 						<?php elseif (video_type($movie_detail->url) == 'vimeo'):
 							$vimeo_video_id = get_vimeo_video_id($movie_detail->url); ?>
 							<link rel="stylesheet" href="<?php echo base_url();?>assets/global/plyr/plyr.css">

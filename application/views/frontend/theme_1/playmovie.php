@@ -71,80 +71,197 @@
 		<div class="row">
 
 			<div class="col-lg-12">
-			<script type="application/javascript">
-				
-			function resizeIFrameToFitContent( iFrame ) {
 
-			iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
-			iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
-			}
+				<!-- Video player generator starts -->
 
-			window.addEventListener('DOMContentLoaded', function(e) {
+				<?php if (video_type($row['url']) == 'youtube'): ?>
 
-			var iFrame = document.getElementById( 'iFrame1' );
-			resizeIFrameToFitContent( iFrame );
+					<!------------- PLYR.IO ------------>
 
-			// or, to resize all iframes:
-			var iframes = document.querySelectorAll("iframe");
-			for( var i = 0; i < iframes.length; i++) {
-				resizeIFrameToFitContent( iframes[i] );
-			}
-			} );
-			</script>
-
-			<iframe src="<?php echo $row['url']; ?>" id="iFrame1"></iframe>
-			
-			<style>
-			.iframe #iFrame1 {
-				width: 600px;
-				height: 600px;
-			}
-			.intrinsic-container {
-
-				position: relative;
-
-				height: 0;
-
-				overflow: hidden;
-
-			}
-
-
-			16x9 Aspect Ratio
-
-			.intrinsic-container-16x9 {
-
-				padding-bottom: 56.25%;
-
-			}
+					<link rel="stylesheet" href="<?php echo base_url();?>assets/global/plyr/plyr.css">
 
 
 
-			/* 4x3 Aspect Ratio */
+					<div class="plyr__video-embed" id="player">
 
-			.intrinsic-container-4x3 {
+					    <iframe src="<?php echo $row['url'];?>?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
 
-				padding-bottom: 75%;
-
-			}
+					</div>
 
 
 
-			.intrinsic-container iframe {
+					<script src="<?php echo base_url();?>assets/global/plyr/plyr.js"></script>
 
-				position: absolute;
+					<script>const player = new Plyr('#player');</script>
 
-				top:0;
+					<!------------- PLYR.IO ------------>
+				<?php elseif (video_type($row['url']) == 'topflix'): ?>
+					<div class="plyr__video-embed" id="player">
+						<iframe src="<?php echo $row['url']; ?>" allowfullscreen allowtransparency frameborder = "0" width="1040" height="585"></iframe>
+					</div>
 
-				left: 0;
+				<?php elseif (video_type($row['url']) == 'vimeo'):
 
-				width: 100%;
+					$vimeo_video_id = get_vimeo_video_id($row['url']); ?>
 
-				height: 100%;
+					<link rel="stylesheet" href="<?php echo base_url();?>assets/global/plyr/plyr.css">
 
-			}
 
-			</style>
+
+					<div class="plyr__video-embed" id="player">
+
+					    <iframe src="https://player.vimeo.com/video/<?php echo $vimeo_video_id; ?>?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency allow="autoplay"></iframe>
+
+					</div>
+
+
+					<script src="<?php echo base_url();?>assets/global/plyr/plyr.js"></script>
+
+					<script>const player = new Plyr('#player');</script>
+
+				<?php else :?>
+
+					<link rel="stylesheet" href="<?php echo base_url();?>assets/global/plyr/plyr.css">
+
+					<video poster="<?php echo $this->crud_model->get_thumb_url('movie' , $row['movie_id']);?>" id="player" playsinline controls>
+
+					<?php if (get_video_extension($row['url']) == 'mp4'): ?>
+
+						<source src="<?php echo $row['url']; ?>" type="video/mp4">
+
+					<?php elseif (get_video_extension($row['url']) == 'webm'): ?>
+
+						<source src="<?php echo $row['url']; ?>" type="video/webm">
+
+					<?php else: ?>
+
+						<h4><?php get_phrase('video_url_is_not_supported'); ?></h4>
+
+					<?php endif; ?>
+
+					</video>
+
+
+
+					<script src="<?php echo base_url();?>assets/global/plyr/plyr.js"></script>
+
+					<script>const player = new Plyr('#player');</script>
+
+				<?php endif; ?>
+
+				<!-- Video player generator ends -->
+
+
+
+				<?php
+
+				$iframe_embed = $this->crud_model->is_iframe($row['url']);
+
+				if ($iframe_embed == true):
+
+				?>
+
+				<!-- loads iframe embed option as video player -->
+
+				<style>
+
+				.intrinsic-container {
+
+				  position: relative;
+
+				  height: 0;
+
+				  overflow: hidden;
+
+				}
+
+
+
+				/* 16x9 Aspect Ratio */
+
+				.intrinsic-container-16x9 {
+
+				  padding-bottom: 56.25%;
+
+				}
+
+
+
+				/* 4x3 Aspect Ratio */
+
+				.intrinsic-container-4x3 {
+
+				  padding-bottom: 75%;
+
+				}
+
+
+
+				.intrinsic-container iframe {
+
+				  position: absolute;
+
+				  top:0;
+
+				  left: 0;
+
+				  width: 100%;
+
+				  height: 100%;
+
+				}
+
+				</style>
+
+				<!-- <div class="intrinsic-container intrinsic-container-16x9">
+
+  					<iframe src="<?php echo $row['url'];?>" allowfullscreen style="border:0px; width:100%; height:100%;"></iframe>
+
+				</div> -->
+
+				<?php
+
+				endif;
+
+				if ($iframe_embed == false):
+
+				?>
+
+				<!-- loads jwplayer as video player
+
+				<script src="https://content.jwplatform.com/libraries/O7BMTay5.js"></script>
+
+				<div id="video_player_div"><?php echo $row['title'];?></div>
+
+
+
+
+
+				<script>
+
+					jwplayer("video_player_div").setup({
+
+						"file": "<?php echo $row['url'];?>",
+
+						"image": "<?php echo $this->crud_model->get_poster_url('movie' , $row['movie_id']);?>",
+
+						"width": "100%",
+
+						aspectratio: "16:9",
+
+						listbar: {
+
+						  position: 'right',
+
+						  size: 260
+
+						},
+
+					  });
+
+				</script>-->
+
+				<?php endif;?>
 
 			</div>
 
