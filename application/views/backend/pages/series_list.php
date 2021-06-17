@@ -1,30 +1,30 @@
 <a href="<?php echo base_url();?>index.php?admin/series_create/" class="btn btn-primary" style="margin-bottom: 20px;">
 <i class="fa fa-plus"></i>
-<?php echo get_phrase('Create_series'); ?>
+	<?php echo get_phrase('Create_series'); ?>
 </a>
 
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title"><?php echo get_phrase('Tv_Series_Title'); ?></h4>
-                <table id="basic-datatable" class="table dt-responsive nowrap" width="100%">
+                <h4 class="header-title"><?php echo get_phrase('Series_List'); ?></h4>
+				<table id="basic-datatable" class="table dt-responsive nowrap" width="100%">
 					<thead>
 						<tr>
 							<th>
 								#
 							</th>
 							<th></th>
-							<th><?php echo get_phrase('Series_Title'); ?></th>
+							<th><?php echo get_phrase('Series_List'); ?></th>
 							<th><?php echo get_phrase('Genre'); ?></th>
 							<th><?php echo get_phrase('Operation'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
-							$seriess = $this->db->get('series')->result_array();
+							$series = $this->db->get('series')->result_array();
 							$counter = 1;
-							foreach ($seriess as $row):
+							foreach ($series as $row):
 							  ?>
 						<tr>
 							<td style="vertical-align: middle;"><?php echo $counter++;?></td>
@@ -38,14 +38,14 @@
 									target="_blank" class="btn btn-secondary btn-xs btn-mini">
 								<i class="fa fa-external-link"></i><?php echo get_phrase('visit'); ?></a>
 								<a href="<?php echo base_url();?>index.php?admin/series_edit/<?php echo $row['series_id'];?>" class="btn btn-info btn-xs btn-mini">
-								<?php echo get_phrase('manage'); ?></a>
+								<?php echo get_phrase('edit'); ?></a>
 								<a href="<?php echo base_url();?>index.php?admin/series_delete/<?php echo $row['series_id'];?>" class="btn btn-danger btn-xs btn-mini" onclick="return confirm('Want to delete?')">
 								<?php echo get_phrase('delete'); ?></a>
 							</td>
 						</tr>
 						<?php endforeach;?>
 					</tbody>
-                </table>
+				</table>
             </div>
         </div>
     </div>

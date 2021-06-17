@@ -1,6 +1,6 @@
 <?php include 'header_browse.php';?>
 
-<!-- MOVIE LIST, GENRE WISE LISTING -->
+<!-- TV SERIAL LIST, GENRE WISE LISTING -->
 
 <div class="row" style="margin:20px 60px;">
 
@@ -8,9 +8,7 @@
 
 		<?php echo $this->db->get_where('genre', array('genre_id' => $genre_id))->row()->name;?> 
 
-			<?php echo get_phrase('Series');?> 
-
-				(<?php echo $total_result;?>)
+			<?php echo get_phrase('Animes');?> (<?php echo $total_result;?>)
 
 	</h4>
 
@@ -20,15 +18,15 @@
 
 			<?php 
 
-				foreach ($series as $row)
+				foreach ($animes as $row)
 
 				{
 
 					$title	=	$row['title'];
 
-					$link	=	base_url().'index.php?browse/playseries/'.$row['series_id'];
+					$link	=	base_url().'index.php?browse/playanimes/'.$row['animes_id'];
 
-					$thumb	=	$this->crud_model->get_thumb_url('series' , $row['series_id']);
+					$thumb	=	$this->crud_model->get_thumb_url('animes' , $row['animes_id']);
 
 					include 'thumb.php';
 

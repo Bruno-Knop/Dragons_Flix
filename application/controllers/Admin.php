@@ -69,6 +69,7 @@ class Admin extends CI_Controller {
 		redirect(base_url().'index.php?admin/genre_list' , 'refresh');
 	}
 
+	
 	// WATCH LIST OF MOVIES, MANAGE THEM
 	function movie_list()
 	{
@@ -111,122 +112,168 @@ class Admin extends CI_Controller {
 		redirect(base_url().'index.php?admin/movie_list' , 'refresh');
 	}
 	
-	// WATCH LIST OF SERIESS, MANAGE THEM
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// WATCH LIST OF MOVIES, MANAGE THEM
 	function series_list()
 	{
 		$page_data['page_name']		=	'series_list';
-		$page_data['page_title']	=	'Manage Tv Series';
+		$page_data['page_title']	=	'Manage series';
 		$this->load->view('backend/index', $page_data);
 	}
 
-	// CREATE A NEW SERIES
+	// CREATE A NEW MOVIE
 	function series_create()
 	{
 		if (isset($_POST) && !empty($_POST))
 		{
 			$this->crud_model->create_series();
-			redirect(base_url().'index.php?admin/series_list' , 'refresh');
+			redirect(base_url().'index.php?admin/series_list' , 'refresh');	
 		}
 		$page_data['page_name']		=	'series_create';
-		$page_data['page_title']	=	'Create Tv Series';
+		$page_data['page_title']	=	'Create series';
 		$this->load->view('backend/index', $page_data);
 	}
 
-	// EDIT A SERIES
+	// EDIT A MOVIE
 	function series_edit($series_id = '')
 	{
 		if (isset($_POST) && !empty($_POST))
 		{
 			$this->crud_model->update_series($series_id);
-			redirect(base_url().'index.php?admin/series_edit/'.$series_id , 'refresh');
+			redirect(base_url().'index.php?admin/series_list' , 'refresh');
 		}
 		$page_data['series_id']		=	$series_id;
 		$page_data['page_name']		=	'series_edit';
-		$page_data['page_title']	=	'Edit Tv Series. Manage Seasons & Episodes';
+		$page_data['page_title']	=	'Edit series';
 		$this->load->view('backend/index', $page_data);
 	}
 
-	// DELETE A SERIES
+	// DELETE A MOVIE
 	function series_delete($series_id = '')
 	{
 		$this->db->delete('series',  array('series_id' => $series_id));
 		redirect(base_url().'index.php?admin/series_list' , 'refresh');
 	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// WATCH LIST OF ANIMESS, MANAGE THEM
+	function animes_list()
+	{
+		$page_data['page_name']		=	'animes_list';
+		$page_data['page_title']	=	'Manage Animes';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// CREATE A NEW ANIMES
+	function animes_create()
+	{
+		if (isset($_POST) && !empty($_POST))
+		{
+			$this->crud_model->create_animes();
+			redirect(base_url().'index.php?admin/animes_list' , 'refresh');
+		}
+		$page_data['page_name']		=	'animes_create';
+		$page_data['page_title']	=	'Create Animes';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// EDIT A ANIMES
+	function animes_edit($animes_id = '')
+	{
+		if (isset($_POST) && !empty($_POST))
+		{
+			$this->crud_model->update_animes($animes_id);
+			redirect(base_url().'index.php?admin/animes_edit/'.$animes_id , 'refresh');
+		}
+		$page_data['animes_id']		=	$animes_id;
+		$page_data['page_name']		=	'animes_edit';
+		$page_data['page_title']	=	'Edit Animes. Manage Seasons & Episodes';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	// DELETE A ANIMES
+	function animes_delete($animes_id = '')
+	{
+		$this->db->delete('animes',  array('animes_id' => $animes_id));
+		redirect(base_url().'index.php?admin/animes_list' , 'refresh');
+	}
 
 	// CREATE A NEW SEASON
-	function season_create($series_id = '')
+	function season_create($animes_id = '')
 	{
-		$this->db->where('series_id' , $series_id);
-		$this->db->from('season');
+		$this->db->where('animes_id' , $animes_id);
+		$this->db->from('animes_season');
         $number_of_season 	=	$this->db->count_all_results();
 		
-		$data['series_id']	=	$series_id;
-		$data['name']		=	'Season ' . ($number_of_season + 1);
-		$this->db->insert('season', $data);
-		redirect(base_url().'index.php?admin/series_edit/'.$series_id , 'refresh');
+		$data['animes_id']	=	$animes_id;
+		$data['name']		=	'Season' . ($number_of_season + 1);
+		$this->db->insert('animes_season', $data);
+		redirect(base_url().'index.php?admin/animes_edit/'.$animes_id , 'refresh');
 		
 	}
 
 	// EDIT A SEASON
-	function season_edit($series_id = '', $season_id = '')
+	function season_edit($animes_id = '', $season_id = '')
 	{
 		if (isset($_POST) && !empty($_POST))
 		{
 			$data['title']			=	$this->input->post('title');
-			$this->db->update('series', $data,  array('series_id' => $series_id));
-			redirect(base_url().'index.php?admin/series_edit/'.$series_id , 'refresh');
+			$this->db->update('animes', $data,  array('animes_id' => $animes_id));
+			redirect(base_url().'index.php?admin/animes_edit/'.$animes_id , 'refresh');
 		}
-		$series_name				=	$this->db->get_where('series', array('series_id'=>$series_id))->row()->title;
-		$season_name				=	$this->db->get_where('season', array('season_id'=>$season_id))->row()->name;
-		$page_data['page_title']	=	'Manage episodes of ' . $season_name . ' : ' . $series_name;
-		$page_data['season_name']	=	$this->db->get_where('season', array('season_id'=>$season_id))->row()->name;
-		$page_data['series_id']		=	$series_id;
+		$animes_name				=	$this->db->get_where('animes', array('animes_id'=>$animes_id))->row()->title;
+		$season_name				=	$this->db->get_where('animes_season', array('season_id'=>$season_id))->row()->name;
+		$page_data['page_title']	=	'Manage episodes of ' . $season_name . ' : ' . $animes_name;
+		$page_data['season_name']	=	$this->db->get_where('animes_season', array('season_id'=>$season_id))->row()->name;
+		$page_data['animes_id']		=	$animes_id;
 		$page_data['season_id']		=	$season_id;
 		$page_data['page_name']		=	'season_edit';
 		$this->load->view('backend/index', $page_data);
 	}
 
 	// DELETE A SEASON
-	function season_delete($series_id = '', $season_id = '')
+	function season_delete($animes_id = '', $season_id = '')
 	{
-		$this->db->delete('season',  array('season_id' => $season_id));
-		redirect(base_url().'index.php?admin/series_edit/'.$series_id , 'refresh');
+		$this->db->delete('animes_season',  array('season_id' => $season_id));
+		redirect(base_url().'index.php?admin/animes_edit/'.$animes_id , 'refresh');
 	}
 
 	// CREATE A NEW EPISODE
-	function episode_create($series_id = '', $season_id = '')
+	function episode_create($animes_id = '', $season_id = '')
 	{
 		if (isset($_POST) && !empty($_POST))
 		{
 			$data['title']			=	$this->input->post('title');
 			$data['url']			=	$this->input->post('url');
 			$data['season_id']		=	$season_id;
-			$this->db->insert('episode', $data);
+			$this->db->insert('animes_episode', $data);
 			$episode_id = $this->db->insert_id();
 			move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/episode_thumb/' . $episode_id . '.jpg');
-			redirect(base_url().'index.php?admin/season_edit/'.$series_id.'/'.$season_id , 'refresh');
+			redirect(base_url().'index.php?admin/season_edit/'.$animes_id.'/'.$season_id , 'refresh');
 		}
 	}
 
 	// CREATE A NEW EPISODE
-	function episode_edit($series_id = '', $season_id = '', $episode_id = '')
+	function episode_edit($animes_id = '', $season_id = '', $episode_id = '')
 	{
 		if (isset($_POST) && !empty($_POST))
 		{
 			$data['title']			=	$this->input->post('title');
 			$data['url']			=	$this->input->post('url');
 			$data['season_id']		=	$season_id;
-			$this->db->update('episode', $data, array('episode_id'=>$episode_id));
+			$this->db->update('animes_episode', $data, array('episode_id'=>$episode_id));
 			move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/episode_thumb/' . $episode_id . '.jpg');
-			redirect(base_url().'index.php?admin/season_edit/'.$series_id.'/'.$season_id , 'refresh');
+			redirect(base_url().'index.php?admin/season_edit/'.$animes_id.'/'.$season_id , 'refresh');
 		}
 	}
 
 	// DELETE AN EPISODE
-	function episode_delete($series_id = '', $season_id = '', $episode_id = '')
+	function episode_delete($animes_id = '', $season_id = '', $episode_id = '')
 	{
-		$this->db->delete('episode',  array('episode_id' => $episode_id));
-		redirect(base_url().'index.php?admin/season_edit/'.$series_id.'/'.$season_id , 'refresh');
+		$this->db->delete('animes_episode',  array('episode_id' => $episode_id));
+		redirect(base_url().'index.php?admin/season_edit/'.$animes_id.'/'.$season_id , 'refresh');
 	}
 	
 	// WATCH LIST OF ACTORS, MANAGE THEM

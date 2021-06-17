@@ -628,6 +628,23 @@ class Crud_model extends CI_Model {
 
 
 	}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	function get_series($genre_id, $limit = NULL, $offset = 0)
+
+	{
+
+
+
+		$this->db->order_by('series_id', 'desc');
+
+		$this->db->where('genre_id', $genre_id);
+
+		$query = $this->db->get('series', $limit, $offset);
+
+		return $query->result_array();
+
+	}
 
 
 
@@ -646,6 +663,10 @@ class Crud_model extends CI_Model {
 		$data['rating']				=	$this->input->post('rating');
 
 		$data['genre_id']			=	$this->input->post('genre_id');
+
+		$data['featured']			=	$this->input->post('featured');
+
+		$data['url']				=	$this->input->post('url');
 
 
 
@@ -697,6 +718,10 @@ class Crud_model extends CI_Model {
 
 		$data['genre_id']			=	$this->input->post('genre_id');
 
+		$data['featured']			=	$this->input->post('featured');
+
+		$data['url']				=	$this->input->post('url');
+
 
 
 		$actors						=	$this->input->post('actors');
@@ -719,6 +744,8 @@ class Crud_model extends CI_Model {
 
 		$this->db->update('series', $data, array('series_id'=>$series_id));
 
+
+
 		move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
 
 		move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');
@@ -726,36 +753,130 @@ class Crud_model extends CI_Model {
 
 
 	}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	function create_animes()
+
+	{
+
+		$data['title']				=	$this->input->post('title');
+
+		$data['description_short']	=	$this->input->post('description_short');
+
+		$data['description_long']	=	$this->input->post('description_long');
+
+		$data['year']				=	$this->input->post('year');
+
+		$data['rating']				=	$this->input->post('rating');
+
+		$data['genre_id']			=	$this->input->post('genre_id');
 
 
 
-	function get_series($genre_id, $limit = NULL, $offset = 0)
+		$actors						=	$this->input->post('actors');
+
+		$actor_entries				=	array();
+
+		$number_of_entries			=	sizeof($actors);
+
+		for ($i = 0; $i < $number_of_entries ; $i++)
+
+		{
+
+			array_push($actor_entries, $actors[$i]);
+
+		}
+
+		$data['actors']				=	json_encode($actor_entries);
+
+
+
+		$this->db->insert('animes', $data);
+
+		$animes_id = $this->db->insert_id();
+
+		move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/animes_thumb/' . $animes_id . '.jpg');
+
+		move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/animes_poster/' . $animes_id . '.jpg');
+
+
+
+	}
+
+
+
+	function update_animes($animes_id = '')
+
+	{
+
+		$data['title']				=	$this->input->post('title');
+
+		$data['description_short']	=	$this->input->post('description_short');
+
+		$data['description_long']	=	$this->input->post('description_long');
+
+		$data['year']				=	$this->input->post('year');
+
+		$data['rating']				=	$this->input->post('rating');
+
+		$data['genre_id']			=	$this->input->post('genre_id');
+
+
+
+		$actors						=	$this->input->post('actors');
+
+		$actor_entries				=	array();
+
+		$number_of_entries			=	sizeof($actors);
+
+		for ($i = 0; $i < $number_of_entries ; $i++)
+
+		{
+
+			array_push($actor_entries, $actors[$i]);
+
+		}
+
+		$data['actors']				=	json_encode($actor_entries);
+
+
+
+		$this->db->update('animes', $data, array('animes_id'=>$animes_id));
+
+		move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/animes_thumb/' . $animes_id . '.jpg');
+
+		move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/animes_poster/' . $animes_id . '.jpg');
+
+
+
+	}
+
+
+	function get_animes($genre_id, $limit = NULL, $offset = 0)
 
 	{
 
 
 
-        $this->db->order_by('series_id', 'desc');
+        $this->db->order_by('animes_id', 'desc');
 
         $this->db->where('genre_id', $genre_id);
 
-        $query = $this->db->get('series', $limit, $offset);
+        $query = $this->db->get('animes', $limit, $offset);
 
         return $query->result_array();
 
     }
 
 
-
-	function get_seasons_of_series($series_id = '')
+	function get_seasons_of_animes($animes_id = '')
 
 	{
 
 		$this->db->order_by('season_id', 'desc');
 
-        $this->db->where('series_id', $series_id);
+        $this->db->where('animes_id', $animes_id);
 
-        $query = $this->db->get('season');
+        $query = $this->db->get('animes_season');
 
         return $query->result_array();
 
@@ -771,7 +892,7 @@ class Crud_model extends CI_Model {
 
         $this->db->where('season_id', $season_id);
 
-        $query = $this->db->get('episode');
+        $query = $this->db->get('animes_episode');
 
         return $query->result_array();
 
@@ -781,13 +902,14 @@ class Crud_model extends CI_Model {
 
     function get_episode_details_by_id($episode_id = "") {
 
-        $episode_details = $this->db->get_where('episode', array('episode_id' => $episode_id))->row_array();
+        $episode_details = $this->db->get_where('animes_episode', array('episode_id' => $episode_id))->row_array();
 
         return $episode_details;
 
     }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	function create_actor()
 
@@ -871,6 +993,10 @@ class Crud_model extends CI_Model {
 
 			$list_field	=	$active_user.'_serieslist';
 
+		else if ($type == 'animes')
+		
+			$list_field = 	$active_user.'_animeslist';
+
 
 
 		// Getting the list
@@ -920,6 +1046,10 @@ class Crud_model extends CI_Model {
 		else if ($type == 'series')
 
 			$list_field	=	$active_user.'_serieslist';
+
+		else if ($type == 'animes')
+		
+			$list_field = 	$active_user.'_animeslist';
 
 
 

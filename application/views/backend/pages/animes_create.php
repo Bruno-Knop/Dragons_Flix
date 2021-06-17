@@ -1,38 +1,33 @@
-<form method="post" action="<?php echo base_url();?>index.php?admin/series_create" enctype="multipart/form-data">
-	<div class="row">
-	    <div class="col-6">
-	        <div class="card">
-	            <div class="card-body">
-					<div class="form-group mb-3">
-	                    <label for="simpleinput1"><?php echo get_phrase('Series_Title'); ?></label>
-	                    <input type="text" class="form-control" id = "simpleinput1" name="title">
-	                </div>
-					<div class="form-group mb-3">
-	                    <label for="url"><?php echo get_phrase('Video_Url'); ?></label>
-						<span class="help">- <?php echo get_phrase('youtube_or_any_hosted_video'); ?></span>
-	                    <input type="text" class="form-control" name="url" id="url">
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+				<form method="post" action="<?php echo base_url();?>index.php?admin/animes_create" enctype="multipart/form-data">
+	                <div class="form-group mb-3">
+	                    <label for="title"><?php echo get_phrase('Animes_Title'); ?></label>
+	                    <input type="text" class="form-control" id = "title" name="title">
 	                </div>
 
-					<div class="form-group mb-3">
-	                    <label for=""><?php echo get_phrase('Thumbnail'); ?></label>
+	                <div class="form-group mb-3">
+	                    <label for="thumb"><?php echo get_phrase('Thumbnail'); ?></label>
 						<span class="help">- <?php echo get_phrase('icon_image_of_the_movie'); ?></span>
 	                    <input type="file" class="form-control" name="thumb">
 	                </div>
 
-					<div class="form-group mb-3">
-	                    <label for=""><?php echo get_phrase('Poster'); ?></label>
+	                <div class="form-group mb-3">
+	                    <label for="poster"><?php echo get_phrase('Poster'); ?></label>
 						<span class="help">- <?php echo get_phrase('large_banner_image_of_the_movie'); ?></span>
 	                    <input type="file" class="form-control" name="poster">
 	                </div>
 
 					<div class="form-group mb-3">
-						<label for="description_long"><?php echo get_phrase('Long_description'); ?></label>
-						<textarea class="form-control" id="description_long" name="description_long" rows="6"></textarea>
+						<label for="description_short"><?php echo get_phrase('Short_description'); ?></label>
+						<textarea class="form-control" id="description_short" name="description_short" rows="6"></textarea>
 					</div>
 
 					<div class="form-group mb-3">
-						<label for="description_short"><?php echo get_phrase('Short_description'); ?></label>
-						<textarea class="form-control" id="description_short" name="description_short" rows="6"></textarea>
+						<label for="description_long"><?php echo get_phrase('Long_description'); ?></label>
+						<textarea class="form-control" id="description_long" name="description_long" rows="6"></textarea>
 					</div>
 
 					<div class="form-group mb-3">
@@ -86,34 +81,16 @@
 							<?php endfor;?>
 						</select>
 					</div>
-
-					<div class="form-group mb-3">
-						<label for="featured"><?php echo get_phrase('Featured'); ?></label>
-						<span class="help">- <?php echo get_phrase('featured_movie_will_be_shown_in_home_page'); ?></span>
-						<select class="form-control select2" id="featured" name="featured">
-							<option value="0">No</option>
-							<option value="1">Yes</option>
-						</select>
+					<div class="row">
+						<div class="form-group col-6">
+							<input type="submit" class="btn btn-success col-12" value="Create">
+						</div>
+						<div class="col-6">
+							<a href="<?php echo base_url();?>index.php?admin/animes_list" class="btn btn-secondary col-12"><?php echo get_phrase('Go_back'); ?></a>
+						</div>
 					</div>
-	            </div>
-	        </div>
-	    </div>
-		<div class="col-6">
-			<div class="form-group">
-				<label class="form-label"><?php echo get_phrase('Preview:'); ?></label>
-				<div id="video_player_div"></div>
-			</div>
-		</div>
-		<hr>
-		<div class="col-6">
-			<div class="row">
-				<div class="form-group col-6">
-					<input type="submit" class="btn btn-success col-12" value="Create Series">
-				</div>
-				<div class="col-6">
-					<a href="<?php echo base_url();?>index.php?admin/series_list" class="btn btn-secondary col-12">Go back</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
+				</form>
+            </div>
+        </div>
+    </div>
+</div>

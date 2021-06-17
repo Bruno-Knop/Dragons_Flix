@@ -2094,31 +2094,6 @@ CREATE TABLE `ci_sessions` (
 -- --------------------------------------------------------
 
 
-
---
-
--- Table structure for table `episode`
-
---
-
-
-
-DROP TABLE IF EXISTS `episode`;
-
-CREATE TABLE `episode` (
-  `episode_id` int(11) NOT NULL,
-  `season_id` int(11) NOT NULL,
-  `title` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `url` longtext COLLATE utf8_unicode_ci NOT NULL
-
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-
-
--- --------------------------------------------------------
-
-
-
 --
 
 -- Table structure for table `faq`
@@ -2147,8 +2122,6 @@ CREATE TABLE `faq` (
 
 --
 
-
-
 DROP TABLE IF EXISTS `genre`;
 
 CREATE TABLE `genre` (
@@ -2158,20 +2131,19 @@ CREATE TABLE `genre` (
 
 INSERT INTO `genre` (`genre_id`, `name`) VALUES
 (1,'Ação & Aventura'),
-(2,'Animes'),
-(3,'Comédia'),
-(4,'Crime & Policial'),
-(5, 'Documentário'),
-(6,'Drama'),
-(7,'Faroeste'),
-(8,'Ficção científica & Fantasia'),
-(9,'Guerra & Política'),
+(2,'Comédia'),
+(3,'Crime & Policial'),
+(4, 'Documentário'),
+(5,'Drama'),
+(6,'Faroeste'),
+(7,'Ficção científica & Fantasia'),
+(8,'Guerra & Política'),
+(9,'Mistério'),
 (10,'Mistério'),
-(11,'Mistério'),
-(12,'Música & Musicais'),
-(13,'Romance'),
-(14,'Suspense'),
-(15,'Terror');
+(11,'Música & Musicais'),
+(12,'Romance'),
+(13,'Suspense'),
+(14,'Terror');
 
 -- --------------------------------------------------------
 
@@ -2182,7 +2154,6 @@ INSERT INTO `genre` (`genre_id`, `name`) VALUES
 -- Table structure for table `language`
 
 --
-
 
 
 DROP TABLE IF EXISTS `language`;
@@ -2229,7 +2200,7 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `portuguese`) VALUES
 (22, 'Email','Email','E-mail'),
 (23, 'Email_me','Email me','Meu Email'),
 (24, 'Movie','Movie','Filme'),
-(25, 'Tv_Serial','Tv_Serial','Séries'),
+(25, 'Serial','Serial','Séries'),
 (26, 'Admin','Admin','Admin'),
 (27, 'Account','Account','Conta'),
 (28, 'Sign_out','Sign out','Sair'),
@@ -2268,7 +2239,7 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `portuguese`) VALUES
 (61, 'More','More','Mais'),
 (62, 'Episode','Episode','Episódio'),
 (63, 'Search_result_for','Search result for','Resultados da busca por'),
-(64, 'Tv_series','Tv series','Séries'),
+(64, 'series','series','Séries'),
 (65, 'Password','Password','Senha'),
 (66, 'Forget_password','Forget password','Esqueceu a senha'),
 (67, 'Sign_up','Sign up','Inscrever-se'),
@@ -2350,7 +2321,7 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `portuguese`) VALUES
 (143,'delete','delete','Excluir'),
 (144,'visit','visit','Visitar'),
 (145,'total_movies','total movies','Total de Filmes'),
-(146,'total_tv_series','total tv series','Total de Series'),
+(146,'total_series','total series','Total de Series'),
 (147,'total_episodes','total episodes','Total de Episodio'),
 (148,'total_registered_user','total registered user','Total de Usuários Registrado'),
 (149,'total_active_subscription','total active subscription','Total de Inscrições Ativa'),
@@ -2403,11 +2374,11 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `portuguese`) VALUES
 (196,'Title','Title','Título'),
 (197,'Create_a_new_episode','Create a new episode','Crie um novo episódio'),
 (198,'Edit_episode','Edit episode','Editar Episódio'),
-(199,'Tv_Series_Title','Tv Series Title','Título da série de TV'),
+(199,'Series_Title','Series Title','Título da série'),
 (200,'manage_episodes','manage episodes','Gerenciar episódios'),
 (201,'episodes','episodes','Episódios'),
-(202,'Create_season','Seasons_&_episodes','Temporadas & episódios'),
-(203,'Seasons_&_episodes','Create_season','Criar temporada'),
+(202,'Create_season','Create season','Criar temporada'),
+(203,'Seasons_&_episodes','Seasons & episodes','Temporadas & episódios'),
 (204,'manage','manage','Gerenciar'),
 (205,'Series_Title','Series Title','Título da Série'),
 (206,'Create_series','Create series','Criar Série'),
@@ -2428,8 +2399,15 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `portuguese`) VALUES
 (221,'Titles,_actors,_genres','Titles, actors, genres','Títulos, atores, gêneros'),
 (222, 'select_No', 'No', 'Não'),
 (223, 'select_Yes', 'Yes', 'Sim'),
-(224, 'update_movie', 'Update Movie', 'Atualizar Filme');
-
+(224, 'update_movie', 'Update Movie', 'Atualizar Filme'),
+(225, 'Animes','Animes','Animes'),
+(226,'total_animes','total animes','Total de Animes'),
+(227,'Back_to_animes','Back to animes','Voltar para a anime'),
+(228,'Animes_Title','Animes Title','Título do Anime'),
+(229,'Create_animes','Create animes','Criar Animes'),
+(230,'Series_List','Series List','Lista de Séries'),
+(231,'Animes_List','Animes List','Lista de Animes'),
+(232, 'update_anime', 'Update Animes', 'Atualizar Anime');
 -- --------------------------------------------------------
 
 
@@ -2509,6 +2487,54 @@ INSERT INTO `plan` (`plan_id`, `name`, `screens`, `price`, `status`) VALUES
 
 
 -- --------------------------------------------------------
+--
+
+-- Table structure for table `series`
+
+--
+
+
+
+DROP TABLE IF EXISTS `series`;
+
+CREATE TABLE `series` (
+  `series_id` int(11) NOT NULL,
+  `title` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `description_long` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `year` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `genre_id` int(11) NOT NULL,
+  `actors` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `featured` int(11) NOT NULL,
+  `kids_restriction` int(11) NOT NULL DEFAULT '0',
+  `url` longtext COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+-- --------------------------------------------------------
+
+--
+
+-- Table structure for table `episode`
+
+--
+
+
+
+DROP TABLE IF EXISTS `animes_episode`;
+
+CREATE TABLE `animes_episode` (
+  `episode_id` int(11) NOT NULL,
+  `season_id` int(11) NOT NULL,
+  `title` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `url` longtext COLLATE utf8_unicode_ci NOT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+-- --------------------------------------------------------
 
 
 
@@ -2520,11 +2546,11 @@ INSERT INTO `plan` (`plan_id`, `name`, `screens`, `price`, `status`) VALUES
 
 
 
-DROP TABLE IF EXISTS `season`;
+DROP TABLE IF EXISTS `animes_season`;
 
-CREATE TABLE `season` (
+CREATE TABLE `animes_season` (
   `season_id` int(11) NOT NULL,
-  `series_id` int(11) NOT NULL,
+  `animes_id` int(11) NOT NULL,
   `name` longtext COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -2542,10 +2568,10 @@ CREATE TABLE `season` (
 
 
 
-DROP TABLE IF EXISTS `series`;
+DROP TABLE IF EXISTS `animes`;
 
-CREATE TABLE `series` (
-  `series_id` int(11) NOT NULL,
+CREATE TABLE `animes` (
+  `animes_id` int(11) NOT NULL,
   `title` longtext COLLATE utf8_unicode_ci NOT NULL,
   `description_short` longtext COLLATE utf8_unicode_ci NOT NULL,
   `description_long` longtext COLLATE utf8_unicode_ci NOT NULL,
@@ -2711,15 +2737,6 @@ ALTER TABLE `ci_sessions`
 
   ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
---
-
--- Indexes for table `episode`
-
---
-
-ALTER TABLE `episode`
-
-  ADD PRIMARY KEY (`episode_id`);
 
 --
 
@@ -2760,6 +2777,16 @@ ALTER TABLE `language`
 ALTER TABLE `movie`
 
   ADD PRIMARY KEY (`movie_id`);
+  
+--
+
+-- Indexes for table `movie`
+
+--
+
+ALTER TABLE `series`
+
+  ADD PRIMARY KEY (`series_id`);
 
 --
 
@@ -2771,13 +2798,23 @@ ALTER TABLE `plan`
 
   ADD PRIMARY KEY (`plan_id`);
 
+
+--
+
+-- Indexes for table `episode`
+
+--
+
+ALTER TABLE `animes_episode`
+
+  ADD PRIMARY KEY (`episode_id`);
 --
 
 -- Indexes for table `season`
 
 --
 
-ALTER TABLE `season`
+ALTER TABLE `animes_season`
 
   ADD PRIMARY KEY (`season_id`);
 
@@ -2787,9 +2824,9 @@ ALTER TABLE `season`
 
 --
 
-ALTER TABLE `series`
+ALTER TABLE `animes`
 
-  ADD PRIMARY KEY (`series_id`);
+  ADD PRIMARY KEY (`animes_id`);
 
 --
 
@@ -2841,16 +2878,6 @@ ALTER TABLE `actor`
 
 --
 
--- AUTO_INCREMENT for table `episode`
-
---
-
-ALTER TABLE `episode`
-
-  MODIFY `episode_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
-
 -- AUTO_INCREMENT for table `faq`
 
 --
@@ -2877,7 +2904,7 @@ ALTER TABLE `genre`
 
 ALTER TABLE `language`
 
-  MODIFY `phrase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `phrase_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 
@@ -2888,6 +2915,16 @@ ALTER TABLE `language`
 ALTER TABLE `movie`
 
   MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT;
+  
+--
+
+-- AUTO_INCREMENT for table `series`
+
+--
+
+ALTER TABLE `series`
+
+  MODIFY `series_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 
@@ -2899,13 +2936,24 @@ ALTER TABLE `plan`
 
   MODIFY `plan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
+
+--
+
+-- AUTO_INCREMENT for table `episode`
+
+--
+
+ALTER TABLE `animes_episode`
+
+  MODIFY `episode_id` int(11) NOT NULL AUTO_INCREMENT;
+  
 --
 
 -- AUTO_INCREMENT for table `season`
 
 --
 
-ALTER TABLE `season`
+ALTER TABLE `animes_season`
 
   MODIFY `season_id` int(11) NOT NULL AUTO_INCREMENT;
 
@@ -2915,9 +2963,9 @@ ALTER TABLE `season`
 
 --
 
-ALTER TABLE `series`
+ALTER TABLE `animes`
 
-  MODIFY `series_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `animes_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 

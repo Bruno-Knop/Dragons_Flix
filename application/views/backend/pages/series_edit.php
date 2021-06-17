@@ -1,36 +1,41 @@
 <?php
 	$series_detail = $this->db->get_where('series',array('series_id'=>$series_id))->row();
 ?>
-<div class="row">
-    <div class="col-6">
-        <div class="card">
-            <div class="card-body">
-				<form method="post" action="<?php echo base_url();?>index.php?admin/series_edit/<?php echo $series_id;?>" enctype="multipart/form-data">
-	                <div class="form-group mb-3">
-	                    <label for="title"><?php echo get_phrase('Tv_Series_Title'); ?></label>
-	                    <input type="text" class="form-control" id = "title" name="title" value="<?php echo $series_detail->title;?>">
+<form method="post" action="<?php echo base_url();?>index.php?admin/series_edit/<?php echo $series_id;?>" enctype="multipart/form-data">
+	<div class="row">
+	    <div class="col-6">
+	        <div class="card">
+	            <div class="card-body">
+					<div class="form-group mb-3">
+	                    <label for="simpleinput1"><?php echo get_phrase('Series_Title'); ?></label>
+	                    <input type="text" class="form-control" id = "simpleinput1" name="title" value="<?php echo $series_detail->title;?>">
+	                </div>
+					<div class="form-group mb-3">
+	                    <label for="url"><?php echo get_phrase('Video_Url'); ?></label>
+						<span class="help">- <?php echo get_phrase('youtube_or_any_hosted_video'); ?></span>
+	                    <input type="text" class="form-control" name="url" id="url" value="<?php echo $series_detail->url;?>">
 	                </div>
 
-	                <div class="form-group mb-3">
-	                    <label for="thumb"><?php echo get_phrase('Thumbnail'); ?></label>
+					<div class="form-group mb-3">
+	                    <label for=""><?php echo get_phrase('Thumbnail'); ?></label>
 						<span class="help">- <?php echo get_phrase('icon_image_of_the_movie'); ?></span>
 	                    <input type="file" class="form-control" name="thumb">
 	                </div>
 
-	                <div class="form-group mb-3">
-	                    <label for="poster"><?php echo get_phrase('Poster'); ?></label>
+					<div class="form-group mb-3">
+	                    <label for=""><?php echo get_phrase('Poster'); ?></label>
 						<span class="help">- <?php echo get_phrase('large_banner_image_of_the_movie'); ?></span>
 	                    <input type="file" class="form-control" name="poster">
 	                </div>
 
 					<div class="form-group mb-3">
-						<label for="description_short"><?php echo get_phrase('Short_description'); ?></label>
-						<textarea class="form-control" id="description_short" name="description_short" rows="6"><?php echo $series_detail->description_short;?></textarea>
+						<label for="description_long"><?php echo get_phrase('Long_description'); ?></label>
+						<textarea class="form-control" id="description_long" name="description_long" rows="6"><?php echo $series_detail->description_short;?></textarea>
 					</div>
 
 					<div class="form-group mb-3">
-						<label for="description_long"><?php echo get_phrase('Long_description'); ?></label>
-						<textarea class="form-control" id="description_long" name="description_long" rows="6"><?php echo $series_detail->description_long;?></textarea>
+						<label for="description_short"><?php echo get_phrase('Short_description'); ?></label>
+						<textarea class="form-control" id="description_short" name="description_short" rows="6"><?php echo $series_detail->description_long;?></textarea>
 					</div>
 
 					<div class="form-group mb-3">
@@ -100,59 +105,82 @@
 							<?php endfor;?>
 						</select>
 					</div>
-					<div class="row">
-						<div class="form-group col-6">
-							<input type="submit" class="btn btn-success col-12" value="Update Tv Series">
-						</div>
-						<div class="col-6">
-							<a href="<?php echo base_url();?>index.php?admin/series_list" class="btn btn-secondary col-12"><?php echo get_phrase('Go_back'); ?></a>
-						</div>
-					</div>
-				</form>
-            </div>
-        </div>
-    </div>
-	<div class="col-6">
-		<div class="card">
-            <div class="card-body">
-                <h4 class="header-title"><?php echo get_phrase('Seasons_&_episodes'); ?></h4>
-				<a href="<?php echo base_url();?>index.php?admin/season_create/<?php echo $series_id;?>"
-					class="btn btn-primary pull-right" style="margin-bottom: 20px;">
-				<i class="fa fa-plus"></i>
-				<?php echo get_phrase('Create_season'); ?>
-				</a>
 
-				<table class="table table-hover table-centered mb-0" width="100%">
-					<tbody>
-						<?php
-							$seasons	=	$this->crud_model->get_seasons_of_series($series_id);
-							foreach ($seasons as $row):
-							?>
-						<tr>
-							<td>
-								<i class="fa fa-dot-circle-o"></i>
-								<?php echo $row['name'];?>
-							</td>
-							<td>
-								<?php
-									$episodes	=	$this->crud_model->get_episodes_of_season($row['season_id']);
-									echo count($episodes);
-									?>
-								<?php echo get_phrase('episodes'); ?>
-							</td>
-							<td>
-								<a href="<?php echo base_url();?>index.php?admin/season_edit/<?php echo $series_id.'/'.$row['season_id'];?>"
-									class="btn btn-info btn-xs btn-mini">
-								<?php echo get_phrase('manage_episodes'); ?></a>
-								<a href="<?php echo base_url();?>index.php?admin/season_delete/<?php echo $series_id.'/'.$row['season_id'];?>"
-									class="btn btn-danger btn-xs btn-mini" onclick="return confirm('Want to delete?')">
-								<?php echo get_phrase('delete'); ?></a>
-							</td>
-						</tr>
-						<?php endforeach;?>
-					</tbody>
-                </table>
-            </div>
-        </div>
+					<div class="form-group mb-3">
+						<label for="featured"><?php echo get_phrase('Featured'); ?></label>
+						<span class="help">- <?php echo get_phrase('featured_movie_will_be_shown_in_home_page'); ?></span>
+						<select class="form-control select2" id="featured" name="featured">
+							<option value="0" <?php if ( $series_detail->featured == 0) echo 'selected';?>><?php echo get_phrase('select_No');?></option>
+							<option value="1" <?php if ( $series_detail->featured == 1) echo 'selected';?>><?php echo get_phrase('select_Yes');?></option>
+						</select>
+					</div>
+	            </div>
+	        </div>
+	    </div>
+		<div class="col-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="form-group">
+						<label class="form-label"><?php echo get_phrase('Preview:'); ?></label>
+
+						<!-- Video player generator starts -->
+						<?php if (video_type($series_detail->url) == 'youtube'): ?>
+							<!------------- PLYR.IO ------------>
+							<link rel="stylesheet" href="<?php echo base_url();?>assets/global/plyr/plyr.css">
+
+							<div class="plyr__video-embed" id="player">
+							    <iframe src="<?php echo $series_detail->url;?>?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+							</div>
+
+							<script src="<?php echo base_url();?>assets/global/plyr/plyr.js"></script>
+							<script>const player = new Plyr('#player');</script>
+
+							<!------------- PLYR.IO ------------>
+						<?php elseif (video_type($series_detail->url) == 'topflix'): ?>
+							<div class="plyr__video-embed" id="player">
+								<iframe src="<?php echo $series_detail->url; ?>" allowfullscreen allowtransparency frameborder = "0" width="743.5" height="464.69"></iframe>
+							</div>
+						<?php elseif (video_type($series_detail->url) == 'vimeo'):
+							$vimeo_video_id = get_vimeo_video_id($series_detail->url); ?>
+							<link rel="stylesheet" href="<?php echo base_url();?>assets/global/plyr/plyr.css">
+
+							<div class="plyr__video-embed" id="player">
+							    <iframe src="https://player.vimeo.com/video/<?php echo $vimeo_video_id; ?>?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency allow="autoplay"></iframe>
+							</div>
+
+							<script src="<?php echo base_url();?>assets/global/plyr/plyr.js"></script>
+							<script>const player = new Plyr('#player');</script>
+						<?php else :?>
+							<link rel="stylesheet" href="<?php echo base_url();?>assets/global/plyr/plyr.css">
+							<video poster="<?php echo $this->crud_model->get_thumb_url('series' , $series_detail->series_id);?>" id="player" playsinline controls>
+							<?php if (get_video_extension($series_detail->url) == 'mp4'): ?>
+								<source src="<?php echo $series_detail->url; ?>" type="video/mp4">
+							<?php elseif (get_video_extension($series_detail->url) == 'webm'): ?>
+								<source src="<?php echo $series_detail->url; ?>" type="video/webm">
+							<?php else: ?>
+								<h4><?php get_phrase('video_url_is_not_supported'); ?></h4>
+							<?php endif; ?>
+							</video>
+
+							<script src="<?php echo base_url();?>assets/global/plyr/plyr.js"></script>
+							<script>const player = new Plyr('#player');</script>
+						<?php endif; ?>
+						<!-- Video player generator ends -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="col-6">
+			<div class="row">
+				<div class="form-group col-6">
+					<input type="submit" class="btn btn-success col-12" value="<?php echo get_phrase('update_series'); ?>">
+				</div>
+				<div class="col-6">
+					<a href="<?php echo base_url();?>index.php?admin/series_list" class="btn btn-secondary col-12"><?php echo get_phrase('Go_Back'); ?></a>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
+</form>

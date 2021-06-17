@@ -1,11 +1,11 @@
 <div class="row">
 	<div class="col-md-6 col-sm-6 col-xs-6">
-		<a href="<?php echo base_url();?>index.php?admin/series_edit/<?php echo $series_id;?>"
+		<a href="<?php echo base_url();?>index.php?admin/animes_edit/<?php echo $animes_id;?>"
 			class="btn btn-primary" style="clear:both;margin-bottom: 20px;" >
 			<i class="mdi mdi-arrow-left-drop-circle-outline"></i>
-			<?php echo get_phrase('Back_to_series'); ?>
+			<?php echo get_phrase('Back_to_animes'); ?>
 		</a>
-		<a href="<?php echo base_url();?>index.php?browse/playseries/<?php echo $series_id.'/'.$season_id;?>"
+		<a href="<?php echo base_url();?>index.php?browse/playanimes/<?php echo $animes_id.'/'.$season_id;?>"
 			class="btn btn-primary" style="clear:both;margin-bottom: 20px;" target="_blank">
 			<i class="mdi mdi-arrow-top-right"></i>
 			<?php echo get_phrase('visit'); ?> <?php echo $season_name;?>
@@ -52,10 +52,10 @@
 								<?php echo $row['title'];?>
 							</td>
 							<td>
-								<a href="#" onClick="load_edit_form(<?php echo $series_id.','.$season_id.','.$episode_id;?>)"
+								<a href="#" onClick="load_edit_form(<?php echo $animes_id.','.$season_id.','.$episode_id;?>)"
 									class="btn btn-info btn-xs btn-mini">
 								<?php echo get_phrase('edit'); ?></a>
-								<a href="<?php echo base_url();?>index.php?admin/episode_delete/<?php echo $series_id.'/'.$season_id.'/'.$episode_id;?>" 
+								<a href="<?php echo base_url();?>index.php?admin/episode_delete/<?php echo $animes_id.'/'.$season_id.'/'.$episode_id;?>" 
 									class="btn btn-danger btn-xs btn-mini" onclick="return confirm('Want to delete?')">
 								<?php echo get_phrase('delete'); ?></a>
 							</td>
@@ -68,7 +68,7 @@
 		</div>
 	</div>
 	<script>
-		function load_edit_form(series_id,season_id,episode_id)
+		function load_edit_form(animes_id,season_id,episode_id)
 		{
 			document.getElementById("form_holder").innerHTML = document.getElementById("edit_episode_form_"+episode_id).innerHTML;
 		}
@@ -95,7 +95,7 @@
 			<h4><?php echo get_phrase('Create_a_new_episode'); ?></h4>
 		</div>
 		<div class="grid-body">
-			<form method="post" action="<?php echo base_url();?>index.php?admin/episode_create/<?php echo $series_id.'/'.$season_id;?>"
+			<form method="post" action="<?php echo base_url();?>index.php?admin/episode_create/<?php echo $animes_id.'/'.$season_id;?>"
 				enctype="multipart/form-data">
 				<div class="form-group">
 					<label class="form-label"><?php echo get_phrase('Title'); ?></label>
@@ -136,7 +136,7 @@
 			<h4><?php echo get_phrase('Edit_episode'); ?></h4>
 		</div>
 		<div class="grid-body">
-			<form method="post" action="<?php echo base_url();?>index.php?admin/episode_edit/<?php echo $series_id.'/'.$season_id.'/'.$episode_id;?>"
+			<form method="post" action="<?php echo base_url();?>index.php?admin/episode_edit/<?php echo $animes_id.'/'.$season_id.'/'.$episode_id;?>"
 				enctype="multipart/form-data">
 				<div class="form-group">
 					<label class="form-label"><?php echo get_phrase('Title'); ?></label>

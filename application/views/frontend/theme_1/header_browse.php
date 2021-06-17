@@ -53,7 +53,7 @@
 						<?php endforeach;?>
 					</ul>
 				</li>
-				<!-- TV SERIES GENRE WISE-->
+				<!-- SERIES GENRE WISE-->
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: #e50914; font-weight: bold;">
 						<?php echo get_phrase('Tv_Serial');?> <span class="caret"></span>
@@ -69,6 +69,30 @@
 								// shows number of movies available
 								$this->db->where('genre_id', $row['genre_id']);
 								$num_rows = $this->db->count_all_results('series');
+								if ($num_rows > 0)
+									echo ' (' . $num_rows . ')';
+							?>
+							</a>
+						</li>
+						<?php endforeach;?>
+					</ul>
+				</li>
+				<!-- ANIMES GENRE WISE-->
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: #e50914; font-weight: bold;">
+						<?php echo get_phrase('Animes');?> <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="themes">
+						<?php
+							$genres		=	$this->crud_model->get_genres();
+							foreach ($genres as $row):
+							?>
+						<li><a href="<?php echo base_url();?>index.php?browse/animes/<?php echo $row['genre_id'];?>">
+							<?php 
+								echo $row['name'];
+								// shows number of movies available
+								$this->db->where('genre_id', $row['genre_id']);
+								$num_rows = $this->db->count_all_results('animes');
 								if ($num_rows > 0)
 									echo ' (' . $num_rows . ')';
 							?>
@@ -197,7 +221,7 @@
 	</div>
 </div>
 <?php 
-	if ($page_name == 'home' || $page_name == 'playmovie' || $page_name == 'playseries')
+	if ($page_name == 'home' || $page_name == 'playmovie' || $page_name == 'playseries' || $page_name == 'playanimes')
 		$padding_amount = '0px';
 	else
 		$padding_amount = '50px';
