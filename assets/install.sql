@@ -2372,7 +2372,7 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `portuguese`) VALUES
 (194,'Create_episode','Create episode','Criar Episódio'),
 (195,'Episode_list','Episode list','Lista de Episódios'),
 (196,'Title','Title','Título'),
-(197,'Create_a_new_episode','Create a new episode','Crie um novo episódio'),
+(197,'Create_a_new_episode','Create a new episode','Criar novo episódio'),
 (198,'Edit_episode','Edit episode','Editar Episódio'),
 (199,'Series_Title','Series Title','Título da série'),
 (200,'manage_episodes','manage episodes','Gerenciar episódios'),
@@ -2401,13 +2401,16 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `portuguese`) VALUES
 (223, 'select_Yes', 'Yes', 'Sim'),
 (224, 'update_movie', 'Update Movie', 'Atualizar Filme'),
 (225, 'Animes','Animes','Animes'),
-(226,'total_animes','total animes','Total de Animes'),
-(227,'Back_to_animes','Back to animes','Voltar para a anime'),
-(228,'Animes_Title','Animes Title','Título do Anime'),
-(229,'Create_animes','Create animes','Criar Animes'),
-(230,'Series_List','Series List','Lista de Séries'),
-(231,'Animes_List','Animes List','Lista de Animes'),
-(232, 'update_anime', 'Update Animes', 'Atualizar Anime');
+(226, 'total_animes','total animes','Total de Animes'),
+(227, 'Back_to_animes','Back to animes','Voltar para a anime'),
+(228, 'Animes_Title','Animes Title','Título do Anime'),
+(229, 'Create_animes','Create animes','Criar Animes'),
+(230, 'Series_List','Series List','Lista de Séries'),
+(231, 'Animes_List','Animes List','Lista de Animes'),
+(232, 'update_anime', 'Update Animes', 'Atualizar Anime'),
+(233, 'update_episode', 'Update episode', 'Atualizar episódio'),
+(234, 'Update_Website_Settings', 'Update Website Settings', 'Atualizar config site'),
+(235, 'install_update', 'Install update', 'Instalar atualização' );
 -- --------------------------------------------------------
 
 
@@ -2617,7 +2620,7 @@ CREATE TABLE `settings` (
 
 
 INSERT INTO `settings` (`settings_id`, `type`, `description`) VALUES
-(1, 'site_name', 'Movie subscription portal'),
+(1, 'site_name', 'DragonsFlix'),
 (2, 'site_email', ''),
 (3, 'paypal_merchant_email', ''),
 (4, 'invoice_address', ''),
@@ -2627,8 +2630,8 @@ INSERT INTO `settings` (`settings_id`, `type`, `description`) VALUES
 (8, 'refund_policy', ''),
 (9, 'stripe_publishable_key', ''),
 (10, 'stripe_secret_key', ''),
-(11, 'trial_period', 'off'),
-(12, 'trial_period_days', '30'),
+(11, 'trial_period', 'ON'),
+(12, 'trial_period_days', '999999999'),
 (13, 'theme', 'theme_1');
 
 
@@ -2702,6 +2705,10 @@ CREATE TABLE `user` (
   `user2_serieslist` longtext COLLATE utf8_unicode_ci NOT NULL,
   `user3_serieslist` longtext COLLATE utf8_unicode_ci NOT NULL,
   `user4_serieslist` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `user1_animeslist` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `user2_animeslist` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `user3_animeslist` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `user4_animeslist` longtext COLLATE utf8_unicode_ci NOT NULL,
   `plan_id` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1' COMMENT '0 banned'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;

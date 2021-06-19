@@ -38,7 +38,7 @@
 					<?php echo get_phrase('Your_name');?>
 				</div>
                 <div class="black_text">
-					<input type="name" name="name" value = "" style="padding: 10px; width:400px;" autocomplete="off"  placeholder="" required>
+					<input type="name" name="name" style="padding: 10px; width:400px;" autocomplete="off"  placeholder="" required>
 				</div>
 				<div style="margin:10px 0px 5px;">
 					<?php echo get_phrase('Email_Address');?>
@@ -50,9 +50,7 @@
 					<?php echo get_phrase('Password');?>
 				</div>
 				<div class="black_text">
-					<input type="password" name="password"  style="padding: 10px; width:400px;" minlength="6"  placeholder=""
-
-                        required>
+					<input type="password" name="password"  style="padding: 10px; width:400px;" minlength="6"  placeholder="" required>
 				</div>
 				<button type="submit"  class="btn btn-primary" style=" width: 150px; margin: 20px 0px;">
 					<?php echo get_phrase('Register');?></button>

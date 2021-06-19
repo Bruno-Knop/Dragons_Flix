@@ -56,7 +56,7 @@
 				<!-- SERIES GENRE WISE-->
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: #e50914; font-weight: bold;">
-						<?php echo get_phrase('Tv_Serial');?> <span class="caret"></span>
+						<?php echo get_phrase('Serial');?> <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="themes">
 						<?php
@@ -109,7 +109,7 @@
 			<!-- PROFILE, ACCOUNT SECTION -->
 			<?php
 				// by deault, email & general thumb shown at top
-				$bar_text	=	$this->db->get_where('user', array('user_id'=>$this->session->userdata('user_id')))->row()->email;
+				$bar_text	=	$this->db->get_where('user', array('user_id'=>$this->session->userdata('user_id')))->row()->name;
 				$bar_thumb	=	'thumb1.png';
 				
 				// check if there is active subscription

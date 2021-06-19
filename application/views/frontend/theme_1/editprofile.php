@@ -15,17 +15,17 @@
 		$username 	=	$this->crud_model->get_username_of_user('user1');
 		$thumb	=	'thumb1.png';
 	}
-	else if ($user == ('user2')
+	else if ($user == 'user2')
 	{
 		$username 	=	$this->crud_model->get_username_of_user('user2');
 		$thumb	=	'thumb2.png';
 	}
-	else if ($user == ('user3')
+	else if ($user == 'user3')
 	{
 		$username 	=	$this->crud_model->get_username_of_user('user3');
 		$thumb	=	'thumb3.png';
 	}
-	else if ($user == ('user4')
+	else if ($user == 'user4')
 	{
 		$username 	=	$this->crud_model->get_username_of_user('user4');
 		$thumb	=	'thumb4.png';

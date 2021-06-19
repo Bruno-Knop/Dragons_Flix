@@ -55,19 +55,19 @@
 					<span style="font-size: 20px;"><?php echo get_phrase('MEMBERSHIP_AND_BILLING');?></span>
 					<br>
 					<?php
-						if ( $this->crud_model->validate_subscription() == false):
-						?>
-					<a href="<?php echo base_url();?>index.php?browse/purchaseplan" 
-						class="btn btn-primary" style="margin:10px 0px;"> 
-							<?php echo get_phrase('Purchase_Membership');?> </a>
-					<?php endif;?>
+						//if ( $this->crud_model->validate_subscription() == false):
+					?>
+					<!-- <a href="<?php //echo base_url();?>index.php?browse/purchaseplan" 
+						class="btn btn-primary" style="margin:10px 0px;"> -->
+							<?php //echo get_phrase('Purchase_Membership');?> </a>
+					<?php// endif;?>
 					<?php
-						if ( $this->crud_model->validate_subscription() != false):
-						?>
-					<!--<a href="<?php echo base_url();?>index.php?browse/cancelplan" 
+						//if ( $this->crud_model->validate_subscription() != false):
+					?>
+					<!--<a href="<?php //echo base_url();?>index.php?browse/cancelplan" 
 						class="btn btn-default" style="margin:10px 0px;"> 
-							<?php echo get_phrase('Cancel_Membership');?> </a>-->
-					<?php endif;?>
+							<?php //echo get_phrase('Cancel_Membership');?> </a>-->
+					<?php// endif;?>
 				</div>
 				<div class="col-lg-7">
 					<div class="row" style="margin: 5px;">

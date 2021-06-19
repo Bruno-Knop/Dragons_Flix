@@ -120,6 +120,8 @@ class Crud_model extends CI_Model {
 
 	{
 
+		$data['name'] 		= $this->input->post('name');
+
 		$data['email'] 		= $this->input->post('email');
 
 		$data['password'] 	= sha1($this->input->post('password'));

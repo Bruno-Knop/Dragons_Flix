@@ -119,7 +119,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-success" value="Create episode">
+					<input type="submit" class="btn btn-success" value="<?php echo get_phrase('Create_a_new_episode'); ?>">
 				</div>
 			</form>
 		</div>
@@ -160,7 +160,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-success" value="Update episode">
+					<input type="submit" class="btn btn-success" value=<?php echo get_phrase("update_episode"); ?>>
 				</div>
 			</form>
 		</div>
