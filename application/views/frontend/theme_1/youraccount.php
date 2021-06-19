@@ -46,8 +46,8 @@
 		<?php endif;?>
 		<!-- NOTIFICATION MESSAGES ENDS -->
 		<div class="col-lg-12">
-			<h3 class="black_text"><?php echo get_phrase('Account');?></h3>
-			<hr>
+			<h3 class="white_text"><?php echo get_phrase('Account');?></h3>
+			<hr class="signup_hr">
 		</div>
 		<div class="col-lg-12">
 			<div class="row">
@@ -71,7 +71,7 @@
 				</div>
 				<div class="col-lg-7">
 					<div class="row" style="margin: 5px;">
-						<div class="pull-left black_text">
+						<div class="pull-left white_text">
 							<b><?php echo $this->crud_model->get_current_user_detail()->email;?></b>
 						</div>
 						<div class="pull-right">
@@ -89,7 +89,7 @@
 					</div>
 				</div>
 			</div>
-			<hr>
+			<hr class="signup_hr">
 			<div class="row">
 				<div class="col-lg-5">
 					<span style="font-size: 20px;">
@@ -107,7 +107,7 @@
 									$current_subscription_upto_timestamp
 																=	$this->db->get_where('subscription', array('plan_id'=> $current_plan_id))->row()->timestamp_to;
 								?>
-							<b class="black_text" style="text-transform: capitalize;">
+							<b class="white_text" style="text-transform: capitalize;">
 							<?php echo $current_plan_name . "" . $current_plan_screens . ""; ?>
 							</b>
 							<br>
@@ -144,7 +144,7 @@
 					</div>
 				</div>
 			</div>
-			<hr>
+			<hr class="signup_hr">
 			<div class="row">
 				<div class="col-lg-5">
 					<span style="font-size: 20px;">
@@ -153,14 +153,14 @@
 				</div>
 				<div class="col-lg-7">
 					<div class="row" style="margin: 5px;">
-						<div class="pull-left black_text">
+						<div class="pull-left white_text">
 						
 							<?php
 							if (isset($active_user)) :
 								// $bar_text & $bar_thumb is coming from header_browser.php, if they are available only.
 								?>
 							
-								<img src="<?php echo base_url();?>assets/global/<?php echo $bar_thumb;?>" style="margin:10px 10px 10px 0px; height: 30px;" />
+								<img src="<?php echo base_url();?>assets/global/user_thumb/<?php echo $bar_thumb;?>" style="margin:10px 10px 10px 0px; height: 30px;" />
 									<?php echo $bar_text;?>
 								<br>
 								
@@ -176,6 +176,6 @@
 			</div>
 		</div>
 	</div>
-	<hr>
+	<hr class="signup_hr">
 	<?php include 'footer.php';?>
 </div>

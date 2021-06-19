@@ -2195,7 +2195,7 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `portuguese`) VALUES
 (17, 'Frequently_asked_question','Frequently asked question','Perguntas Frequentes'),
 (18, 'Faq','Faq','Faq'),
 (19, 'Refund_Policy','Refund Policy','Política de Reembolso'),
-(20, 'Forgot_Email/_Password','Forgot Email/ Password','Esqueci o e-mail/senha'),
+(20, 'Forgot_Email_Password','Find your account','Encontre sua conta'),
 (21, 'Enter_your_email_address. We_will_send_you_a_temporary_password.','Enter your email address. We will send you a temporary password.','Digite seu endereço de e-mail. Enviaremos uma senha temporária.'),
 (22, 'Email','Email','E-mail'),
 (23, 'Email_me','Email me','Meu Email'),
@@ -2307,7 +2307,7 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `portuguese`) VALUES
 (129,'Credit_/_Debit_card','Credit / Debit_card','Cartão Credito / Debito'),
 (130,'pay','pay','pagar'),
 (131,'Success!_Your_Stripe_token_is','Success! Your Stripe token is','Sucesso! Seu Stripe Token é'),
-(132,'NERDFLIX','NERDFLIX®','NERDFLIX®'),
+(132,'site_name','site_name®','site_name®'),
 (133,'Update_profile','Update profile','Atualizar perfil'),
 (134,'Your_name','Your name','Seu nome'),
 (135,'Your_email','Your email','Seu email'),
@@ -2410,7 +2410,8 @@ INSERT INTO `language` (`phrase_id`, `phrase`, `english`, `portuguese`) VALUES
 (232, 'update_anime', 'Update Animes', 'Atualizar Anime'),
 (233, 'update_episode', 'Update episode', 'Atualizar episódio'),
 (234, 'Update_Website_Settings', 'Update Website Settings', 'Atualizar config site'),
-(235, 'install_update', 'Install update', 'Instalar atualização' );
+(235, 'install_update', 'Install update', 'Instalar atualização' ),
+(236, 'send_mail', 'Send mail', 'Enviar E-mail' );
 -- --------------------------------------------------------
 
 

@@ -1,5 +1,5 @@
 <!-- TOP LANDING SECTION -->
-<div style="height:93vh;width:100%;background-image: url(<?php echo base_url().'assets/frontend/flixer/images/home_top_banner.jpg';?>)">
+<div class="lading_selection" style="height:93vh;width:100%;background-image: url(<?php echo base_url().'assets/frontend/' . $selected_theme;?>/images/home_top_banner.jpg)">
 	<!-- logo -->
 	<div style="float: left;">
 		<a href="<?php echo base_url();?>index.php?home">

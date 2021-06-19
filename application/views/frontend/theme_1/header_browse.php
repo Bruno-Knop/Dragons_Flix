@@ -144,7 +144,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding:10px;">
-					<img src="<?php echo base_url();?>assets/global/<?php echo $bar_thumb;?>" 
+					<img src="<?php echo base_url();?>assets/global/user_thumb/<?php echo $bar_thumb;?>" 
 						style="height:30px; border-radius: 50%;" />
 					<?php echo $bar_text;?>
 					<span class="caret"></span></a>
@@ -156,7 +156,7 @@
 							  ?>
 						<li>
 							<a href="<?php echo base_url();?>index.php?browse/doswitch/user1">
-							<img src="<?php echo base_url();?>assets/global/thumb1.png" 
+							<img src="<?php echo base_url();?>assets/global/user_thumb/thumb1.png" 
 								style="height:30px; margin: 5px; border-radius: 50%;" />
 								<?php echo $this->crud_model->get_username_of_user('user1');?>
 							</a>
@@ -166,7 +166,7 @@
 							?>
 						<li>
 							<a href="<?php echo base_url();?>index.php?browse/doswitch/user2">
-							<img src="<?php echo base_url();?>assets/global/thumb2.png" 
+							<img src="<?php echo base_url();?>assets/global/user_thumb/thumb2.png" 
 								style="height:30px; margin: 5px; border-radius: 50%;" />
 								<?php echo $this->crud_model->get_username_of_user('user2');?>
 							</a>
@@ -177,7 +177,7 @@
 							?>
 						<li>
 							<a href="<?php echo base_url();?>index.php?browse/doswitch/user3">
-							<img src="<?php echo base_url();?>assets/global/thumb3.png" 
+							<img src="<?php echo base_url();?>assets/global/user_thumb/thumb3.png" 
 								style="height:30px; margin: 5px; border-radius: 50%;" />
 								<?php echo $this->crud_model->get_username_of_user('user3');?>
 							</a>
@@ -188,7 +188,7 @@
 							?>
 						<li>
 							<a href="<?php echo base_url();?>index.php?browse/doswitch/user4">
-							<img src="<?php echo base_url();?>assets/global/thumb4.png" 
+							<img src="<?php echo base_url();?>assets/global/user_thumb/thumb4.png" 
 								style="height:30px; margin: 5px; border-radius: 50%;" />
 								<?php echo $this->crud_model->get_username_of_user('user4');?>
 							</a>

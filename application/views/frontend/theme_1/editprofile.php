@@ -8,7 +8,7 @@
 </style>
 
 <!-- TOP LANDING SECTION -->
-<div style="height:100vh;width:100%; background-color: #141414;">
+<div class="lading_selection">
 	<?php
 	if ($user == 'user1')
 	{
@@ -48,11 +48,12 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-3">
-							<img src="<?php echo base_url();?>/assets/global/<?php echo $thumb;?>" style="height: 160px;" />
+							<img src="<?php echo base_url();?>/assets/global/user_thumb/<?php echo $thumb;?>" style="height: 160px;" />
 						</div>
 						<div class="col-lg-9">
 							<input type="text" class="input_black" placeholder="Name" value="<?php echo $username;?>" name="username" />
 							<br><br>
+							
 							<!--<select class="select_black">
 								<option>icon </option>
 							</select>-->

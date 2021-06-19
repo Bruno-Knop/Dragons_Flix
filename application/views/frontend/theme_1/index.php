@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/frontend/' . $selected_theme;?>/fontawesome/css/font-awesome.min.css">
     <script src="<?php echo base_url() . 'assets/frontend/' . $selected_theme;?>/jquery-1.10.2.min.js" ></script>
     <script src="<?php echo base_url() . 'assets/frontend/' . $selected_theme;?>/bootstrap.min.js" ></script>
-    <style>
-		.black_text{color:#000; background-color: #f3f3f3;}
-		.blue_text{color: #0080ff;}
-	</style>
 </head>
 <?php
 $bg_color = "#000";
@@ -24,7 +20,7 @@ if ($page_name == 'signup' || $page_name == 'signin' || $page_name == 'faq' ||
    				$page_name == 'emailchange' || $page_name== 'passwordchange'||
    					$page_name == 'cancelplan' || $page_name == 'purchaseplan'||
    						$page_name == 'purchasestripe')
-    $bg_color = "#f3f3f3";
+    $bg_color = "#000";
 ?>
 <body style="background-color:<?php echo $bg_color;?>;">
 	<?php include ($page_name . '.php');?>

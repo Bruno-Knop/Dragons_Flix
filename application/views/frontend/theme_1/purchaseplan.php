@@ -7,12 +7,12 @@
 <div class="container" style="margin-top: 90px;">
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="black_text"><?php echo get_phrase('Purchase_Membership');?></h3>
+			<h3 class="white_text"><?php echo get_phrase('Purchase_Membership');?></h3>
 			<hr>
 		</div>
 		<div class="col-lg-8">
-			<h4 class="black_text"><?php echo get_phrase('Purchase_any_of_the_membership_package_from_below.');?></h4>
-			<ul class="black_text">
+			<h4 class="white_text"><?php echo get_phrase('Purchase_any_of_the_membership_package_from_below.');?></h4>
+			<ul class="white_text">
 				<li>
 					<?php echo get_phrase('Select_any_of_your_preferred_membership_package_&_make_payment.');?>
 				</li>

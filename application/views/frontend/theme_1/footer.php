@@ -5,7 +5,7 @@
 				<li><a href="<?php echo base_url();?>index.php?general/faq"><?php echo get_phrase('Faq');?></a></li>
 				<li><a href="<?php echo base_url();?>index.php?general/privacypolicy"><?php echo get_phrase('Privacy_Policy');?></a></li>
 			</ul>
-            <p><?php echo get_phrase('NERDFLIX®');?></p>
+            <p class="name_site_footer"><?php echo get_phrase('site_name');?></p>
 		</div>
 	</div>
 </footer>

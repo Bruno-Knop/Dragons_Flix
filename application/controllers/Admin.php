@@ -453,7 +453,11 @@ class Admin extends CI_Controller {
 		{
 			// Updating website name
 			$data['description']		=	$this->input->post('site_name');
+			$langENG['english']			=	$this->input->post('site_name');
+			$langPT['portuguese']		=	$this->input->post('site_name');
 			$this->db->update('settings', $data,  array('type' => 'site_name'));
+			$this->db->update('language', $langENG,  array('phrase' => 'site_name'));
+			$this->db->update('language', $langPT,  array('phrase' => 'site_name'));
 			
 			// Updating website email
 			$data['description']		=	$this->input->post('site_email');

@@ -1,5 +1,5 @@
 <!-- TOP LANDING SECTION -->
-<div style="height:93vh;width:100%;background-image: url(<?php echo base_url().'assets/frontend/'.$selected_theme;?>/images/login_bg.jpg)">
+<div class="lading_selection" style="height:93vh;width:100%;background-image: url(<?php echo base_url().'assets/frontend/'.$selected_theme;?>/images/login_bg.jpg)">
 	
 	<!-- logo -->
 	<div style="float: left;">
@@ -14,7 +14,7 @@
 	<form action="<?php echo base_url();?>index.php?home/forget" method="post">
 		<div class="row">
 			<div class="col-lg-4 col-lg-offset-4" style="clear: both;">
-				<div style="background-color: #f3f3f3; padding: 30px;">
+				<div class="forget_style">
 					<?php 
 					if ($this->session->flashdata('password_reset') == 'failed'):
 					?>
@@ -36,15 +36,15 @@
 						</div>
 					<?php endif;?>
 
-					<h3 class="black_text"><?php echo get_phrase('Forgot_Email/_Password');?></h3>
+					<h3 class="white_text"><?php echo get_phrase('Forgot_Email_Password');?></h3>
 					<?php echo get_phrase('Enter_your_email_address. We_will_send_you_a_temporary_password.');?>
-					<div class="black_text" style="margin-top: 20px;">
+					<div class="white_text" style="margin-top: 20px;">
 					<?php echo get_phrase('Email');?> 
 					</div>
-					<div class="black_text">
+					<div class="black_text_input">
 						<input type="email" name="email" style="padding: 10px; width:100%;" />
 					</div>
-					<button type="submit" class="btn btn-primary" style=" width: 100%; margin: 20px 0px;"><?php echo get_phrase('Email_me');?></button>
+					<button type="submit" class="btn btn-primary" style=" width: 100%; margin: 20px 0px;"><?php echo get_phrase('send_mail');?></button>
 				</div>
 			</div>
 		</div>
