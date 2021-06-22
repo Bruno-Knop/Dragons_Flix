@@ -27,12 +27,43 @@
 				<span class="icon-bar"></span>
 			</button>
 		</div>
+
+		<script>
+			function redirect(type){
+				if(type === 'Movies'){
+					document.getElementById("caretMovies").classList.toggle("open");
+					winclick();
+				}else if(type === 'Serial'){
+					document.getElementById("caretSerial").classList.toggle("open");
+					winclick();
+				}else if(type === 'Animes'){
+					document.getElementById("caretAnimes").classList.toggle("open");
+					winclick();
+				}
+			}
+			function winclick() {
+				window.onclick = function(event) {
+					if (!event.target.matches('.dropdown-menu')) {
+						var dropdowns = document.getElementsByClassName("caret");
+						var i;
+						for (i = 0; i < dropdowns.length; i++) {
+						var openDropdown = dropdowns[i];
+						if (openDropdown.classList.contains('open')) {
+							openDropdown.classList.remove('open');
+						}
+						}
+					}
+				}
+			}
+			
+		</script>
+
 		<div class="navbar-collapse collapse" id="navbar-main">
 			<ul class="nav navbar-nav">
 				<!-- MOVIES GENRE WISE-->
-				<li class="dropdown">
+				<li onclick="redirect('Movies')" class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: #e50914; font-weight: bold;">
-						<?php echo get_phrase('Movie');?> <span class="caret"></span>
+						<?php echo get_phrase('Movie');?> <span onclick="caretMovies()" id="caretMovies" class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="themes">
 						<?php
@@ -54,9 +85,9 @@
 					</ul>
 				</li>
 				<!-- SERIES GENRE WISE-->
-				<li class="dropdown">
+				<li onclick="redirect('Serial')" class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: #e50914; font-weight: bold;">
-						<?php echo get_phrase('Serial');?> <span class="caret"></span>
+						<?php echo get_phrase('Serial');?> <span onclick="caretSerial()" id="caretSerial" class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="themes">
 						<?php
@@ -78,9 +109,9 @@
 					</ul>
 				</li>
 				<!-- ANIMES GENRE WISE-->
-				<li class="dropdown">
+				<li onclick="redirect('Animes')" class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: #e50914; font-weight: bold;">
-						<?php echo get_phrase('Animes');?> <span class="caret"></span>
+						<?php echo get_phrase('Animes');?> <span onclick="caretAnimes()" id="caretAnimes" class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="themes">
 						<?php

@@ -2151,6 +2151,7 @@ body {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 14px;
+  width: 100%;
 
   line-height: 1.42857143;
 
@@ -2160,11 +2161,19 @@ body {
 
 }
 
+.indice_list{
+  margin: 10px 20px;
+}
+
+.genre_list {
+  margin: 5px 40px;
+}
+
 .lading_selection {
   width: 100%;
   height: 90px;
   background-color: #000;
-  border-bottom: solid 1px #ff0000;
+  border-bottom: solid 1px #E50914;
 }
 
 .logo_signup {
@@ -2172,12 +2181,33 @@ body {
   height: 50px;
 }
 .text_box{
-  color: #ff0000;
+  color: #E50914;
   background-color: #000;
 }
 
 .signup_hr {
-  border-top: 1px solid #ff0000;
+  border-top: 1px solid #E50914;
+}
+
+.home_hr{
+  border-top: 1px solid #E50914;
+}
+
+.footer_hr{
+  border-top: 1px solid #888888;
+  margin: 15px 15px;
+  margin-inline: 0px;
+}
+
+.text_home{
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-weight: 500;
+
+  line-height: 1.1;
+
+  color: #E50914;
+
 }
 
 .signin_style {
@@ -2224,7 +2254,7 @@ body {
 }
 
 .name_site_footer{
-  color: #ff0000;
+  color: #E50914;
 }
 
 input,
@@ -3269,9 +3299,9 @@ pre code {
 
 .row {
 
-  margin-left: -15px;
+  margin-left: 15px;
 
-  margin-right: -15px;
+  margin-right: 15px;
 
 }
 
@@ -7143,25 +7173,29 @@ tbody.collapse.in {
 }
 
 .caret {
-
   display: inline-block;
-
   width: 0;
-
   height: 0;
-
   margin-left: 2px;
-
   vertical-align: middle;
-
   border-top: 4px dashed;
-
   border-top: 4px solid \9;
-
   border-right: 4px solid transparent;
-
   border-left: 4px solid transparent;
+  transform: rotate(0deg);
+}
 
+.caret.open {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  transform: rotate(180deg);
 }
 
 .dropup,
@@ -7181,43 +7215,24 @@ tbody.collapse.in {
 .dropdown-menu {
 
   position: absolute;
-
   top: 100%;
-
   left: 0;
-
   z-index: 1000;
-
   display: none;
-
   float: left;
-
   min-width: 160px;
-
   padding: 5px 0;
-
   margin: 2px 0 0;
-
   list-style: none;
-
   font-size: 14px;
-
   text-align: left;
-
   background-color: rgba(0, 0, 0, 0.85);
-
   border: 1px solid #444444;
-
   border: 1px solid rgba(255, 255, 255, 0.1);
-
   border-radius: 4px;
-
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-
   -webkit-background-clip: padding-box;
-
   background-clip: padding-box;
 
 }
