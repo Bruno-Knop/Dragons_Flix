@@ -18,8 +18,8 @@
 <div class="navbar navbar-default navbar-fixed-top <?php echo $nav_type;?>" >
 	<div class="container" style=" width: 100%;">
 		<div class="navbar-header">
-			<a href="<?php echo base_url();?>index.php?browse/home" class="navbar-brand">
-				<img src="<?php echo base_url();?>/assets/global/logo.png" style=" height: 32px;margin-right: 50px;" />
+			<a href="<?php echo base_url();?>index.php?browse/home" class="navbar-brand-logo">
+				<img src="<?php echo base_url();?>/assets/global/logo.png" style="height: 100%;" />
 			</a>
 			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
 				<span class="icon-bar"></span>

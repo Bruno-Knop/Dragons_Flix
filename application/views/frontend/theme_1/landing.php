@@ -3,7 +3,7 @@
 	<!-- logo -->
 	<div style="float: left;">
 		<a href="<?php echo base_url();?>index.php?home">
-		<img src="<?php echo base_url();?>/assets/global/logo.png" style="margin: 18px 18px; width: 160px;" />
+		<img src="<?php echo base_url();?>/assets/global/logo.png" class="logo_img" />
 		</a>
 	</div>
 	<div style="float: right;margin: 18px 18px; height: 50px;" class="hidden-xs">

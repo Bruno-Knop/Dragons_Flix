@@ -34,14 +34,14 @@
 	<!-- logo -->
 	<div style="float: left;">
 		<a href="<?php echo base_url();?>">
-			<img src="<?php echo base_url();?>/assets/global/logo.png" style="margin: 18px 40px; height: 35px;" />
+			<img src="<?php echo base_url();?>/assets/global/logo.png" class="logo_img" />
 		</a>
 	</div>
 	<div class="container">
 		<div class="row">
 			<form method="post" id="form" 
 				action="<?php echo base_url();?>index.php?browse/editprofile/<?php echo $user;?>">
-				<div class="col-lg-8 col-lg-offset-2">
+				<div class="col-lg-9 col-lg-offset-2">
 					<div style="clear: both; padding-top: 100px;">
 						<h1><?php echo get_phrase('Edit_Profile');?></h1>
 						<hr style="border-top:1px solid #333;">
@@ -50,7 +50,7 @@
 						<div class="col-lg-3">
 							<img src="<?php echo base_url();?>/assets/global/user_thumb/<?php echo $thumb;?>" style="height: 160px;" />
 						</div>
-						<div class="col-lg-9">
+						<div class="col-lg-8" style="float: right;">
 							<input type="text" class="input_black" placeholder="Name" value="<?php echo $username;?>" name="username" />
 							<br><br>
 							

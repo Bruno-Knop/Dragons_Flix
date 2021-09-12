@@ -43,6 +43,9 @@ if ( ! function_exists('video_type'))
         } elseif (strpos($url, 'vimeo') > 0) {
 
             return 'vimeo';
+        } elseif (strpos($url, 'google') > 0) {
+
+            return 'google';
         } elseif (strpos($url, 'topflix') > 0) {
 
             return 'topflix';

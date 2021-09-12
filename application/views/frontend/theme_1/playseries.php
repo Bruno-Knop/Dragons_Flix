@@ -99,6 +99,11 @@
 					<div class="plyr__video-embed" id="player">
 						<iframe src="<?php echo $row['url']; ?>" allowfullscreen allowtransparency frameborder = "0" width="1040" height="585"></iframe>
 					</div>
+					
+				<?php elseif (video_type($row['url']) == 'google'): ?>
+					<div class="plyr__video-embed" id="player">
+						<iframe src="<?php echo $row['url']; ?>" allowfullscreen allowtransparency frameborder = "0" width="1040" height="585"></iframe>
+					</div>
 
 				<?php elseif (video_type($row['url']) == 'vimeo'):
 

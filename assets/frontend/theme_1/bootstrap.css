@@ -46,6 +46,11 @@ summary {
 
 }
 
+.logo_img {
+  margin: 10px 30px;
+  height: 60px;
+};
+
 audio,
 
 canvas,
@@ -2176,10 +2181,10 @@ body {
   border-bottom: solid 1px #E50914;
 }
 
-.logo_signup {
-  margin: 18px 40px;
-  height: 50px;
+.center {
+  text-align: center;
 }
+
 .text_box{
   color: #E50914;
   background-color: #000;
@@ -8710,6 +8715,13 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
   border-width: 1px 0 0;
 
 }
+
+.navbar-brand-logo {
+  float: left;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
+};
 
 .navbar-brand {
 

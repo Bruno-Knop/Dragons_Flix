@@ -3,10 +3,10 @@
 	<!-- logo -->
 	<div style="float: left;">
 		<a href="<?php echo base_url();?>index.php?home">
-		<img src="<?php echo base_url();?>/assets/global/logo.png" class="logo_signup"/>
+		<img src="<?php echo base_url();?>/assets/global/logo.png" class="logo_img"/>
 		</a>
 	</div>
-	<div style="float: right;margin: 18px 40px; height: 50px;">
+	<div style="float: right;margin: 20px 40px 0px 40px; height: 50px;">
 		<a href="<?php echo base_url();?>index.php?home/signin" class="btn btn-danger">
         <?php echo get_phrase('sign_in');?></a>
 	</div>
@@ -16,7 +16,7 @@
 	td{padding: 12px 15px; border-bottom: 1px solid #ccc; color: #fff;}
 </style>
 <div class="container">
-	<div class="row">
+	<div class="row center">
 		<!-- ERROR MESSAGE SHOWING IF DUPLICATE EMAIL FOUND -->
 		<?php 
 			if ($this->session->flashdata('signup_result') == 'failed'):
@@ -52,7 +52,7 @@
 				<div class="black_text_input">
 					<input type="password" name="password"  style="padding: 10px; width:400px;" minlength="6"  placeholder="" required>
 				</div>
-				<button type="submit"  class="btn btn-primary" style=" width: 150px; margin: 20px 0px;">
+				<button type="submit"  class="btn btn-danger" style=" width: 150px; margin: 20px 0px;">
 					<?php echo get_phrase('Register');?></button>
 			</form>
 		</div>

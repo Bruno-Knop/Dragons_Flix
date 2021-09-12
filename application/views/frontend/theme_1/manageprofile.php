@@ -28,7 +28,7 @@
 
 		<a href="<?php echo base_url();?>">
 
-			<img src="<?php echo base_url();?>/assets/global/logo.png" style="margin: 18px 40px; height: 35px;" />
+			<img src="<?php echo base_url();?>/assets/global/logo.png" class="logo_img" />
 
 		</a>
 
